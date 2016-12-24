@@ -13,14 +13,21 @@ class HandDetector
 {
 public:
     int m_number = 0;
+    QString m_string = "Hello";
     HandDetector();
     ~HandDetector();
 
     int prevx, prevy;
-    void mouseTo(int ,int);
+    void mouseTo(int ,int );
     void run() ;
 
-    char* do_ocr(cv::Mat);
+    void mouseClick();
+    void mouseRelease();
+    bool getAngle(Point , Point , Point );
+    char* do_ocr(cv::Mat );
+    char* do_ocr2(cv::Mat );
+    char* do_ocr_backup(cv::Mat );
+
 
 };
 

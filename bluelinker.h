@@ -62,6 +62,23 @@ private:
     QBluetoothSocket *socket;
     QBluetoothServiceDiscoveryAgent *discoveryAgent;
 
+    QTimer *m_timer;
+
+    float m_direction;
+    float m_targetX;
+    float m_targetY;
+    int interval;
+    int m_resultLeft;
+    int m_resultRight;
+    bool m_showDialog;
+    QString m_message;
+    int m_role;
+
+    bool m_serviceFound;
+
+
+
+    QString m_msg;//
 };
 
 #endif // BLUELINKER_H
