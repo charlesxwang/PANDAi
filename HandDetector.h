@@ -24,9 +24,8 @@ public:
     void mouseClick();
     void mouseRelease();
     bool getAngle(Point , Point , Point );
-    char* do_ocr(cv::Mat );
-    char* do_ocr2(cv::Mat );
-    char* do_ocr_backup(cv::Mat );
+    // char* do_something_with(cv::Mat );
+
 
 
 };
