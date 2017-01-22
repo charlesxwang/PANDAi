@@ -1,0 +1,2 @@
+g++ -std=c++11 verifyDatabase.cpp tinyxml2/tinyxml2.cpp -o verify -L/home/charles/Programs/Opencv-2.4.13/install/lib -lopencv_core -lopencv_imgproc -lopencv_objdetect -lopencv_highgui
+./verify ../database/HGR2A/original_images/1_A_hgr2A1_id02_1.jpg
