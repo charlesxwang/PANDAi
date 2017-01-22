@@ -1,15 +1,15 @@
-#define _TINY_XML_TEST_H_
-
 #include <opencv2/core/core.hpp>
 #include <opencv2/highgui/highgui.hpp>
 #include "tinyxml2/tinyxml2.h"
 #include <iostream>
+#include <typeinfo>
+#include <string>
 
 using namespace cv;
 using namespace tinyxml2;
 using namespace std;
 
-/* 
+/*
  * draw a circle
  */
 
@@ -31,10 +31,11 @@ void drawFilledCircle( Mat img, Point center )
  * read feature points from xml file
  */
 
-vector<Point> readFeaturePts(char* xmlFileName)
+vector<Point> readFeaturePts(string & xmlFilePath)
 {
     XMLDocument doc;
-    doc.LoadFile( xmlFileName );
+    cout << typeid(xmlFilePath).name() << endl;
+    doc.LoadFile( xmlFilePath.c_str() );
 
     int x = 1, y = 1;
     vector<Point> points;
@@ -61,7 +62,13 @@ int main( int argc, char** argv )
     }
 
     Mat image;
-    image = imread(argv[1], CV_LOAD_IMAGE_COLOR);   // Read the file
+
+    string fileName( argv[1]) ;
+    string imgFilePath = "../database/HGR2A/original_images/" + fileName + ".jpg";
+    string xmlFilePath = "../database/HGR2A/feature_points/" + fileName + ".xml";
+
+    image = imread(imgFilePath.c_str(), CV_LOAD_IMAGE_COLOR);   // Read the img file
+
 
     if(! image.data )                              // Check for invalid input
     {
@@ -70,10 +77,12 @@ int main( int argc, char** argv )
     }
 
 
-    vector<Point> points = readFeaturePts((char*)"../database/HGR2A/feature_points/1_A_hgr2A1_id02_1.xml");
+    vector<Point> points = readFeaturePts(xmlFilePath); // read feature points from xml file
+
     for(auto const& value: points) {
         drawFilledCircle( image, value ); // draw feature points on image
     }
+
 
     namedWindow( "Display window", WINDOW_AUTOSIZE );// Create a window for display.
     imshow( "Display window", image );                   // Show  image inside it.
@@ -81,4 +90,5 @@ int main( int argc, char** argv )
 
     waitKey(0);                                          // Wait for a keystroke in the window
     return 0;
+
 }
