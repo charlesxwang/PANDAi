@@ -3,6 +3,7 @@
 #include <opencv2/imgproc.hpp>
 #include "../tinyxml2/tinyxml2.h"
 #include <iostream>
+#include <fstream>
 #include <typeinfo>
 #include <string>
 #include <algorithm>
@@ -25,6 +26,7 @@ public:
     Cooker();
     ~Cooker();
     tuple<Mat, float, float> cook(string imgFilePath, Point indexTip, Size siz);
+
 
 
 

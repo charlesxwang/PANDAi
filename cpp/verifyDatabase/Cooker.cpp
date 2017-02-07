@@ -48,11 +48,10 @@ tuple<Mat, float, float> Cooker::cook(string imgFilePath, Point indexTip, Size s
     utilsCV::drawFilledCircle( imgPadded, Point(int(xRatio*siz.width), int(yRatio*siz.height)) ); // draw feature points on image
 
     
-    if (max(imgPadded.size().width , imgPadded.size().height)!=100 || imgPadded.size().width != imgPadded.size().height)
-            cout << imgPadded.size().width << " , " << imgPadded.size().height << endl;
+    //if (max(imgPadded.size().width , imgPadded.size().height)!=100 || imgPadded.size().width != imgPadded.size().height)
+    //        cout << imgPadded.size().width << " , " << imgPadded.size().height << endl;
 
     return make_tuple(imgPadded, xRatio, yRatio);
 };
-
 
 
